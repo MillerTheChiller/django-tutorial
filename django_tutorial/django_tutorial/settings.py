@@ -10,8 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import configparser
 from pathlib import Path
 
+
+config = configparser.ConfigParser()
+config.read('../config.cfg')
+security_key = config.get('development', 'SECURITY_KEY')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2zfk^o=k#pd#d0-84*2a4aizd0o&c(&fa*s6d&*0(yt0*8#!75'
+SECRET_KEY = security_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,6 +37,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'quotes.apps.QuotesConfig',
+    'todo.apps.TodoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

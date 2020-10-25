@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>To-Do Lists</title>
+  </head>
+  <body>
+    Task lists: {% if task_lists %}
+    <ul>
+      {% for task_list in task_lists %}
+      <li>
+        <a href="/todo/{{ task_list.id }}">
+          {{task_list.list_title}} - {{ task_list.list_description}}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No Task lists are available.</p>
+    {% endif %}
+  </body>
+</html>

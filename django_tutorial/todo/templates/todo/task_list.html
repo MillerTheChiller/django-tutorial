@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ task_list.list_title }}</title>
+  </head>
+  <body>
+    <h1>{{ task_list.list_title }}</h1>
+    <p>{{ task_list.list_description }}</p>
+    {% if tasks %}
+    <ul>
+      {% for task in tasks %}
+      <li>{{task.task_title}}, {{task.do_by}}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No tasks have been created yet!</p>
+    {% endif %}
+    <h3>Add New Task</h3>
+    <form action="/todo/{{ task_list.id }}/create" method="post">
+      {% csrf_token %}
+      <input
+        type="text"
+        name="task_title"
+        id="task_title"
+        placeholder="Add new task"
+        required
+      />
+
+      <input type="date" name="do_by" id="do_by" />
+      <button type="submit">+ add task</button>
+    </form>
+  </body>
+</html>
