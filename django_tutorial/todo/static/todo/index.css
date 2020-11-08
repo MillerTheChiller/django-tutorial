@@ -1,0 +1,27 @@
+.todo-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.todo-list {
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  margin: 5px;
+  background-color: #dc827f;
+  box-sizing: border-box;
+}
+
+.todo-list-link {
+  color: white;
+}
+
+.todo-list-link:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.todo-list-link:visited {
+  color: white;
+}

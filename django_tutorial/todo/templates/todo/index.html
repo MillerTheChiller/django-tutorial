@@ -1,8 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <title>To-Do Lists</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'todo/base.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'todo/index.css' %}"
+    />
+
     <!-- Latest compiled and minified CSS -->
     <link
       rel="stylesheet"
@@ -27,18 +40,53 @@
     ></script>
   </head>
   <body>
-    Task lists: {% if task_lists %}
-    <ul>
-      {% for task_list in task_lists %}
-      <li>
-        <a href="/todo/{{ task_list.id }}">
-          {{task_list.list_title}} - {{ task_list.list_description}}
+    <div>
+      <div>
+        <h1>To do lists</h1>
+      </div>
+      <div class="todo-list-wrapper">
+        {% if task_lists %} {% for task_list in task_lists %}
+        <a class="todo-list-link" href="/todo/{{ task_list.id }}">
+          <div class="todo-list">
+            <h3>{{task_list.list_title}}</h3>
+            <p>{{ task_list.list_description}}</p>
+          </div>
         </a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>No Task lists are available.</p>
-    {% endif %}
+        {% endfor %} {% else %}
+        <p>No Task lists are available.</p>
+        {% endif %}
+      </div>
+      <div class="input-group">
+        <form class="form" action="/todo/create-list" method="post">
+          <h3>Create New List</h3>
+          {% csrf_token %}
+          <div class="formInput">
+            <input
+              type="text"
+              name="list_title"
+              id="list_title"
+              placeholder="Name of the list"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="formInput">
+            <input
+              type="text"
+              name="list_description"
+              id="list_description"
+              placeholder="Description for the list"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="formInput">
+            <button class="btn btn-default" type="submit">
+              + add new list
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
