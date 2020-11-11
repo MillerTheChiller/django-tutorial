@@ -1,7 +1,9 @@
+<!-- Load static needed to make sure django knows this is a template -->
 {% load static %}
 
 <!DOCTYPE html>
 <html>
+  <!-- Metadata -->
   <head>
     <meta charset="utf-8" />
     <title>Polls App</title>
@@ -12,17 +14,23 @@
     />
   </head>
   <body>
+    <!-- namespacing here: polls(from urls.py app_name):index(from the name we defined in the url that routes to views.index) -->
     <a href="{% url 'polls:index' %}"> < Home </a>
+    <!-- question is the object defined from the context that is passed in rendering results.html
+    see: the results view in views.py  -->
     <h1>{{ question.question_text }}</h1>
     <ul>
+      <!-- question_choice_set.all loops through all of the choices for the question defined -->
       {% for choice in question.choice_set.all %}
       <li>
         {{ choice.choice_text }} -- {{ choice.votes }}
+        <!-- choice.votes | pluralize adds an s if choice.votes > 1 or = 0-->
         vote{{choice.votes|pluralize }}
       </li>
       {% endfor %}
     </ul>
-
+    <!-- namespacing here: polls(from urls.py app_name:detail(from the name we defined in the url that routes to views.detail) 
+    question.id is the argument passed in to the url. If the question.id is 1 it would evaluate to /polls/1/ -->
     <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
   </body>
 </html>

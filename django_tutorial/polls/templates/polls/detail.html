@@ -1,7 +1,9 @@
+<!-- Load static needed to make sure django knows this is a template -->
 {% load static %}
 
 <!DOCTYPE html>
 <html>
+    <!-- Metadata -->
   <head>
     <meta charset="utf-8" />
     <title>Polls App</title>
@@ -13,17 +15,22 @@
     />
   </head>
   <body>
-
+    <!-- namespacing here: polls(from urls.py app_name):index(from the name we defined in the url that routes to views.index) -->
     <a href="{% url 'polls:index' %}"> < Home </a>
-
+    <!-- question from the context defined in the detail view of views.py-->
     <h1>{{ question.question_text }}</h1>
-
+    <!-- if the error message is defined in the context -->
     {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-
+    <!-- if the question.choice_set.all = if there are any choices for the question -->
     {% if question.choice_set.all %}
+     <!-- namespacing here: 
+      polls(from urls.py app_name):vote(from the name we defined in the url that routes to views.vote) 
+      question.id is an argument passed in, it's going to evaluate to -> polls/question.id/vote/ -->
     <form action="{% url 'polls:vote' question.id %}" method="post">
+      <!-- csrf_token needed in forms for security purposes -->
+      <!-- for choice in question.choice_set.all checks loops through all the choices -->
       {% csrf_token %} {% for choice in question.choice_set.all %}
       <input
         type="radio"
@@ -31,9 +38,18 @@
         id="choice{{ forloop.counter }}"
         value="{{ choice.id }}"
       />
+      <!-- Value is what we are sending in the request.POST when we hit submit!  -->
+      <!-- 
+        forloop.counter is the number of the choice in the choice_set.
+        question: x with choices, [a,b,c]
+        choice a will have the forloop.counter 0
+        choice b will have the forloop.counter 1
+        choice c will have the forloop.counter 2 
+       -->
       <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label
       ><br />
       {% endfor %}
+      <!-- The submit button, value vote is the text that is displayed in the button -->
       <input type="submit" value="Vote" />
     </form>
     {% else %}
@@ -41,11 +57,19 @@
     {% endif %}
 
     <div> 
+      <!-- Add a new choice to the question -->
       <h3> Add New Choice </h3>
+      <!-- namespacing here: 
+      polls(from urls.py app_name):add_choice(from the name we defined in the url that routes to views.add_choice) 
+      question.id is an argument passed in, it's going to evaluate to -> polls/question.id/add_choice -->
       <form action="{% url 'polls:add_choice' question.id %}" method="post">
         {% csrf_token %}
+        <!-- the name choice_text is what we are looking for in the add_choice poll when 
+        we do request.POST.get('choice_text'). The value here is the input made from the user. 
+        -->
         <div> 
           <div> 
+            <!-- text input field -->
             <input
               type="text"
               name="choice_text"
@@ -56,6 +80,7 @@
             />
           </div>
           <div class="formInput">
+            <!-- Submit button, similar to the <input type="submit" /> just different syntax -->
             <button class="btn btn-default" type="submit">+ Add Choice</button>
           </div>
         </div>
