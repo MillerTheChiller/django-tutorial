@@ -23,6 +23,8 @@ Installing on macOS
 > $ git --version
 > If you don’t have it installed already, it will prompt you to install it.
 
+Installing on Windows 
+>Another easy way to get Git installed is by installing GitHub Desktop. The installer includes a command line version of Git as well as the GUI. It also works well with PowerShell, and sets up solid credential caching and sane CRLF settings. We’ll learn more about those things a little later, but suffice it to say they’re things you want. You can download this from the GitHub Desktop website.
 
 #### Make a github account
 If you have not made a github account, please do so! You can sign up for one here: https://github.com/
@@ -41,13 +43,23 @@ Not necessarily needed as you can have a git repository in any folder, however j
 Pictures of how to fork this django-tutorial repo
 
 #### In your terminal or command prompt, navigate to the github folder you've created
-If you made your github folder in your documents folder like I did the commands in the terminal: 
-`cd documents`
-`cd github`
+If you made your github folder in your documents folder like I did: 
+```
+cd documents
+cd github
+```
 
 #### Clone the repository that you have forked
 
 `git clone repo-url`
+
+To make sure the git clone worked you can navigate to your forked folder either through finder or by typing 
+
+```
+ls
+```
+
+in your terminal and you should see an output of the folder you pulled.
 
 ## Running the application 
 
@@ -68,7 +80,7 @@ In your VSCode `terminal`
 
 `cd django_tutorial` to navigate to the django_tutorial folder. 
 
-In `django_tutorial`:
+In the `django_tutorial` folder run:
 ```
 python manage.py migrate
 ```
