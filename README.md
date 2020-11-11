@@ -50,5 +50,26 @@ If you made your github folder in your documents folder like I did the commands 
 
 ## Running the application 
 
+#### Getting the environment ready & installing the requirements needed.
 
+Open up VSCode. Click open folder. Navigate to your django-tutorial folder and click `open`. 
 
+In VSCode, open the `terminal`.
+
+in the terminal run: 
+```
+pip install -r requirements.txt
+```
+
+#### Run your Django application 
+
+In your VSCode `terminal`
+
+`cd django_tutorial` to navigate to the django_tutorial folder. 
+
+Run 
+```
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
