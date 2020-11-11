@@ -13,9 +13,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import configparser
 from pathlib import Path
 
-
+# https://docs.python.org/3/library/configparser.html
+# Config parser, making sure if we have any tokens we don't want to put directly into settings.py
+# we put them in config.cfg.
+# once we do that we can then read the config.cfg file.
 config = configparser.ConfigParser()
 config.read('../config.cfg')
+# Reads the security_key parameter from the development section of the config.cfg file.
 security_key = config.get('development', 'SECURITY_KEY')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
