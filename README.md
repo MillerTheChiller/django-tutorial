@@ -3,15 +3,16 @@
 ## The Set Up 
 
 #### Install VSCode
-https://code.visualstudio.com/docs/setup/mac
-https://code.visualstudio.com/docs/setup/windows
+Mac: https://code.visualstudio.com/docs/setup/mac
+
+Windows: https://code.visualstudio.com/docs/setup/windows
 
 #### Install Python 
 https://www.python.org/downloads/
 
 The best way to install python is to download python from the python.org website! 
 
-To make sure you have installed python correctly is opening up your `terminal` and typing `python --version`
+To make sure you have installed python correctly: open up your `terminal` and type `python --version`. If you have it successfully installed it should return with a version number! 
 
 #### Install Git 
 Website: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/
@@ -40,7 +41,7 @@ Not necessarily needed as you can have a git repository in any folder, however j
 Pictures of how to fork this django-tutorial repo
 
 #### In your terminal or command prompt, navigate to the github folder you've created
-If you made your github folder in your documents folder like I did the commands in the terminal you have to type are: 
+If you made your github folder in your documents folder like I did the commands in the terminal: 
 `cd documents`
 `cd github`
 
@@ -67,9 +68,11 @@ In your VSCode `terminal`
 
 `cd django_tutorial` to navigate to the django_tutorial folder. 
 
-Run 
+In `django_tutorial`:
 ```
-python manage.py makemigrations
 python manage.py migrate
+```
+and then run 
+```
 python manage.py runserver
 ```
