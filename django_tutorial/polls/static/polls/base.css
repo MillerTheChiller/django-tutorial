@@ -6,3 +6,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+html {
+  --font-family-sans-serif: "helvetica neue";
+}
