@@ -40,7 +40,9 @@ Not necessarily needed as you can have a git repository in any folder, however j
 ## Getting your environment ready 
 
 #### Fork this django-tutorial repo in github
-Pictures of how to fork this django-tutorial repo
+
+How to fork a repo:
+https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo
 
 #### In your terminal or command prompt, navigate to the github folder you've created
 If you made your github folder in your documents folder like I did: 
