@@ -63,6 +63,7 @@
       polls(from urls.py app_name):add_choice(from the name we defined in the url that routes to views.add_choice) 
       question.id is an argument passed in, it's going to evaluate to -> polls/question.id/add_choice -->
       <form action="{% url 'polls:add_choice' question.id %}" method="post">
+        <!-- csrf_token needed here for security purposes! -->
         {% csrf_token %}
         <!-- the name choice_text is what we are looking for in the add_choice poll when 
         we do request.POST.get('choice_text'). The value here is the input made from the user. 

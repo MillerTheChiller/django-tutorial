@@ -72,10 +72,10 @@ def add_choice(request, question_id):
     # /polls/1/add_choice would have the question_id of 1.
     try:
         question = Question.objects.get(id=question_id)
-    # If the question does not exist render polls/index.html with an error message in the context.
+    # If the question does not exist render polls/detail.html with an error message in the context.
     except Question.DoesNotExist:
-        return render(request, 'polls/index.html', {
-            'error_message': "The poll you tried to add a choice to does not exist"
+        return render(request, 'polls/detail.html', {
+            'error_message': "The poll you tried to add a choice for does not exist"
         })
     # If the question does exist:
     # make a new Choice Object with the question as the foreign key,
