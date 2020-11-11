@@ -44,16 +44,20 @@ Not necessarily needed as you can have a git repository in any folder, however j
 How to fork a repo:
 https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo
 
-#### In your terminal or command prompt, navigate to the github folder you've created
+#### Clone the repository you have forked
 If you made your github folder in your documents folder like I did: 
 ```
 cd documents
 cd github
 ```
 
-#### Clone the repository that you have forked
+The URL of the forked repo is going to be like this:
+`git clone https://github.com/YOUR_GITHUB_USERNAME/django-tutorial.git`
 
-`git clone repo-url`
+Or to get it automatically, go to your repo, click the `code` button and copy paste the URL from the `https` section.
+
+![clone link](https://github.com/MillerTheChiller/django-tutorial/blob/main/tutorial_pictures/clone_link.png)
+
 
 To make sure the git clone worked you can navigate to your forked folder either through finder or by typing 
 
@@ -67,8 +71,25 @@ in your terminal and you should see an output of the folder you pulled.
 
 #### Getting the environment ready & installing the requirements needed.
 
-Open up VSCode. Click open folder. Navigate to your django-tutorial folder and click `open`. 
+Open up VSCode. Click open folder. 
 
+![open folder](https://github.com/MillerTheChiller/django-tutorial/blob/main/tutorial_pictures/open_folder.png)
+
+Navigate to your django-tutorial folder and click `open`. 
+
+To make sure you opened the correct folder layer the folder structure in your vscode should look something like this: 
+![open folder](https://github.com/MillerTheChiller/django-tutorial/blob/main/tutorial_pictures/VSCode%20Folder%20Structure.png)
+
+Don't worry about the `.venv` folder!
+
+Copy the `config.cfg.example` file and rename it to `config.cfg`. 
+
+In your `config.cfg` file change `security_key`. It can really be anything but just make sure it's in the format of `'security-key-can-be-integers123'`
+
+![config](https://github.com/MillerTheChiller/django-tutorial/blob/main/tutorial_pictures/config.png)
+
+
+#### Downloading the requirements
 In VSCode, open the `terminal`.
 
 in the terminal run: 
@@ -87,6 +108,12 @@ In the `django_tutorial` folder run:
 python manage.py migrate
 ```
 and then run 
+```
+python manage.py populate_database
+```
+This will populate the database with a test question / test choices. 
+
+Finally, when you've set up all of that. Run:
 ```
 python manage.py runserver
 ```
