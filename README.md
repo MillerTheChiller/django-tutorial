@@ -110,7 +110,7 @@ pip install -r requirements.txt
 
 Open up VSCode Settings and click on the folder with an arrow in the top right: 
 ![vscode settings](https://github.com/MillerTheChiller/django-tutorial/blob/main/tutorial_pictures/vscode_settings.png)
-
+![vscode settings](https://github.com/MillerTheChiller/django-tutorial/blob/main/tutorial_pictures/vscode_settings_json.png)
 Once you are in the settings.json file add 
 
 ```
