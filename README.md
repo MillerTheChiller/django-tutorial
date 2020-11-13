@@ -26,6 +26,10 @@ Installing on macOS
 Installing on Windows 
 >Another easy way to get Git installed is by installing GitHub Desktop. The installer includes a command line version of Git as well as the GUI. It also works well with PowerShell, and sets up solid credential caching and sane CRLF settings. We’ll learn more about those things a little later, but suffice it to say they’re things you want. You can download this from the GitHub Desktop website.
 
+#### Download DB Browser for SQLite
+
+Download a Sqlite browser here: https://sqlitebrowser.org/dl/
+
 #### Make a github account
 If you have not made a github account, please do so! You can sign up for one here: https://github.com/
 
@@ -96,6 +100,27 @@ in the terminal run:
 ```
 pip install -r requirements.txt
 ```
+
+#### Update VSCode Settings To Include Django pylint
+
+After running:
+```
+pip install -r requirements.txt 
+``` 
+
+Open up VSCode Settings and click on the folder with an arrow in the top left: 
+![vscode settings](https://github.com/MillerTheChiller/django-tutorial/blob/main/tutorial_pictures/settings.png)
+
+Once you are in the settings.json file add 
+
+```
+{
+  "editor.formatOnSave": true,
+  "window.zoomLevel": -1,
+  "python.linting.pylintArgs": ["--load-plugins=pylint_django"]
+}
+```
+
 
 #### Run your Django application 
 
