@@ -1,5 +1,10 @@
 # A comprehensive guide on how to install VSCode, Git, Python and start your Django server. 
 
+
+## Don't Panic 
+
+The code in this repo is a working version of the django tutorial found here: https://docs.djangoproject.com/en/3.1/! If after the workshop you're interesting in working with Django I'd highly suggest you go through the tutorial using the code I've developed & commented! It will help give you a strong, foundational understanding of how to develop django apps! 
+
 ## The Set Up 
 
 #### Install VSCode
