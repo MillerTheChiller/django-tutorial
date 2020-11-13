@@ -22,10 +22,10 @@
     <ul>
       <!-- question_choice_set.all loops through all of the choices for the question defined -->
       {% for choice in question.choice_set.all %}
-      <li>
-        {{ choice.choice_text }} -- {{ choice.votes }}
+      <li class="secondaryText">
         <!-- choice.votes | pluralize adds an s if choice.votes > 1 or = 0-->
-        vote{{choice.votes|pluralize }}
+        {{ choice.choice_text }} | Vote{{choice.votes|pluralize }}:
+        {{choice.votes }}
       </li>
       {% endfor %}
     </ul>

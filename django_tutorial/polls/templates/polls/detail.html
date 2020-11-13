@@ -21,7 +21,7 @@
     <h1>{{ question.question_text }}</h1>
     <!-- if the error message is defined in the context -->
     {% if error_message %}
-    <p><strong>{{ error_message }}</strong></p>
+    <p class="errorMessage"><strong>{{ error_message }}</strong></p>
     {% endif %}
     <!-- if the question.choice_set.all = if there are any choices for the question -->
     {% if question.choice_set.all %}
@@ -32,33 +32,35 @@
       <!-- csrf_token needed in forms for security purposes -->
       <!-- for choice in question.choice_set.all checks loops through all the choices -->
       {% csrf_token %} {% for choice in question.choice_set.all %}
-      <input
-        type="radio"
-        name="choice"
-        id="choice{{ forloop.counter }}"
-        value="{{ choice.id }}"
-      />
-      <!-- Value is what we are sending in the request.POST when we hit submit!  -->
-      <!-- 
-        forloop.counter is the number of the choice in the choice_set.
-        question: x with choices, [a,b,c]
-        choice a will have the forloop.counter 0
-        choice b will have the forloop.counter 1
-        choice c will have the forloop.counter 2 
-       -->
-      <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label
-      ><br />
+      <div class="radioDiv">
+        <input
+          type="radio"
+          name="choice"
+          id="choice{{ forloop.counter }}"
+          value="{{ choice.id }}"
+        />
+        <!-- Value is what we are sending in the request.POST when we hit submit!  -->
+        <!-- 
+          forloop.counter is the number of the choice in the choice_set.
+          question: x with choices, [a,b,c]
+          choice a will have the forloop.counter 0
+          choice b will have the forloop.counter 1
+          choice c will have the forloop.counter 2 
+         -->
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label
+        >
+      </div>
       {% endfor %}
       <!-- The submit button, value vote is the text that is displayed in the button -->
-      <input type="submit" value="Vote" />
+      <button type="submit"> Vote </button> 
     </form>
     {% else %}
-    <p>No choices yet, make sure to add some choices to your question!</p>
+    <p class="warningMessage">No choices yet, make sure to add some choices to your question!</p>
     {% endif %}
 
     <div> 
       <!-- Add a new choice to the question -->
-      <h3> Add New Choice </h3>
+      <h3> Add A New Choice: </h3>
       <!-- namespacing here: 
       polls(from urls.py app_name):add_choice(from the name we defined in the url that routes to views.add_choice) 
       question.id is an argument passed in, it's going to evaluate to -> polls/question.id/add_choice -->
@@ -68,14 +70,14 @@
         <!-- the name choice_text is what we are looking for in the add_choice poll when 
         we do request.POST.get('choice_text'). The value here is the input made from the user. 
         -->
-        <div> 
-          <div> 
+        <div class="formWrapper"> 
+          <div class="textInputDiv"> 
             <!-- text input field -->
             <input
               type="text"
               name="choice_text"
               id="question_text"
-              placeholder="Add your choice"
+              placeholder="Add a new choice here..."
               class="form-control"
               required
             />

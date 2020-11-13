@@ -39,7 +39,7 @@ def detail(request, question_id):
 def results(request, question_id):
     ''' results view, handle a read operation for a specific question '''
     # An easy way to look up an object in the database or throw a 404 error if it is not found.
-    # looks up the Questionss defined in the database for a question with the primary_key equal
+    # looks up the Questions defined in the database for a question with the primary_key equal
     # to the one defined in the url
     # /polls/1/results would look like: get_object_or_404(Question, pk=1)
     question = get_object_or_404(Question, pk=question_id)
@@ -114,5 +114,5 @@ def vote(request, question_id):
         selected_choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
+        # user hits the back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))

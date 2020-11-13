@@ -10,14 +10,10 @@
     <!-- Defining some Cascading Style Sheets (CSS) -->
     <!-- Namespacing here: static looks in the static folders of all of the django apps we've created
      polls/ is the folder that we've defined in our static folder in polls 
-    /static/polls/index.css & /static/polls/base.css
+    /static/polls/index.css 
   
     Explanation found here: https://docs.djangoproject.com/en/3.1/intro/tutorial06/ -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'polls/index.css' %}"
-    />
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -25,7 +21,7 @@
     />
   </head>
   <body>
-    <h1>Your Current Polls</h1>
+    <h1>Your Current Polls:</h1>
     <div>
       <!-- Template variable here: in views.index we have defined latest_question_list in the 
       context, here we are seeing if it is defined! -->
@@ -46,7 +42,7 @@
       </ul>
       {% else %}
       <!-- If latest_question_list isn't defined no polls are available! -->
-      <p>No polls are available.</p>
+      <p class="warningMessage">No polls are available.</p>
       {% endif %}
 
       <div class="input-group">
@@ -57,13 +53,13 @@
           <h3>Create New Poll</h3>
           <!-- csrf_token needed here for security purposes! -->
           {% csrf_token %}
-          <div class="formInput wrapper">
+          <div class="formWrapper">
             <div>
               <!-- The value from the input tag here will be what is sent through the POST request! 
                 the input tag name question_text is the identifier in the POST request. 
-                You can see this in the create view! on line 59: request.POST.get('question_text')
-                If we changed the name here to: question_text_test_abc we would have to change line 59 to 
-                request.POST.get('question_text_test_abc')
+                You can see this in the 'create' view when we are accessing the request data: request.POST.get('question_text')
+                If we changed the name here to: question_text_test_abc we would have to change that 
+                code to: request.POST.get('question_text_test_abc')
               -->
               <input
                 type="text"

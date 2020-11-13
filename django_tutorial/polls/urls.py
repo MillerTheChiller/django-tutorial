@@ -7,7 +7,7 @@ from . import views
 # If the question_id was 1 this is how the url would be routed:
 # /polls/ -> views.index
 # /polls/create -> views.create
-# /polls/1 -> views.detail
+# /polls/1/ -> views.detail
 # /polls/1/add_choice -> views.add_choice
 # /polls/1/results/ -> views.results
 # /polls/1/vote/ -> views.vote
